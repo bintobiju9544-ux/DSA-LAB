@@ -46,11 +46,12 @@ void main()
 		printf("2. Delete\n");
 		printf("3. Peek\n");
 		printf("4. Status\n");
-		printf("5. Exit\n");
+		printf("5. Display\n");
+		printf("6. Exit\n");
 		printf("Enter your choice: ");
 		scanf("%d",&choice);
 		switch(choice)
-			{
+				{
 		    	case 1:
 		        	if(is_full())
 		        		{
@@ -61,7 +62,7 @@ void main()
 		                	printf("Enter the element to insert: ");
 		                	scanf("%d",&n);
 		                	insert_queue(n);
-		            		}
+		            	}
 		        	break;
 		    	case 2:
 		        	if(is_empty())
@@ -88,12 +89,35 @@ void main()
 		        	else
 		            		printf("Space Available\n");
 		        	break;
-		    	case 5:
+				case 5:
+					{ 
+						if (is_empty()) 
+							{
+        					printf("Queue is Empty!\n");
+        					return;
+    						}
+    					printf("Circular Queue Elements are: ");
+    					if (r>=f) 
+							{
+        					for (int i=f;i<=r;i++)
+            					printf("%d ",queue[i]);
+    						} 
+						else 
+							{
+        					for (int i=f;i<size;i++)
+            					printf("%d ",queue[i]);
+        					for (int i=0;i<=r;i++)
+            					printf("%d ",queue[i]);
+    						}
+    					printf("\n");
+						break;
+					}
+		    	case 6:
 		        	printf("Exiting...\n");
 		        	break;
 		    	default:
 		        	printf("Invalid choice!\n");
         		}
     		}
-	while(choice !=5);
+	while(choice !=6);
 	}
